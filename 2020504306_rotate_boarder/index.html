@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                background-color: #191c29;
+            }
+
+            /* Animation only triggered when CSS property numeric value changed. */
+            /* 1. must be numeric value */
+            /* 2. must be property */
+
+            .card-inner {
+                content: '';
+                position: absolute;
+                inset: 8px;
+                background-color: #191c29;
+                border-radius: inherit;
+            }
+            /* Houdini CSS API */
+            /*  */
+            @property --direc {
+                syntax: '<angle>';
+                initial-value: 0deg;
+                inherits: false;
+            }
+
+            .card {
+                margin-top: 200px;
+                height: 600px;
+                width: 300px;
+                color: red;
+                font-size: 2rem;
+                background-image: linear-gradient(var(--direc), #5ddcff, #3c67e3 43%, #4e00c2);
+                animation: rotate 3s linear infinite;
+                border-radius: 30px;
+                position: relative;
+                /* box-shadow: 0 0 30px #5ddcff, 0 0 30px #3c67e3, 0 0 30px #4e00c2; */
+            }
+
+            @keyframes rotate {
+                to {
+                    --direc: 360deg;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="card-inner"></div>
+        </div>
+    </body>
+</html>
